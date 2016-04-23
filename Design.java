@@ -1,5 +1,5 @@
 package mancala;
 
-public class Design {
+public interface Design {
     
 }
