@@ -1,3 +1,3 @@
 # MancalaCS151
 
-#Shlomo, Janice, & Justin
+Shlomo, Janice, & Justin
