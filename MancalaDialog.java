@@ -110,7 +110,7 @@ public class MancalaDialog extends JDialog
 		};
 	}
 	
-	/*public int getStoneNum()
+	public int getStoneNum()
 	{
 		return stoneCount;
 	}
@@ -118,5 +118,5 @@ public class MancalaDialog extends JDialog
 	public DesignLayout getDesign()
 	{
 		return design;
-	}*/
+	}
 }
