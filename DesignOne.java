@@ -7,12 +7,6 @@ import java.awt.geom.RoundRectangle2D;
 public class DesignOne extends DesignLayout
 {
 
-	public DesignOne(int nPlayers, int boardLength)
-	{
-		super(nPlayers, boardLength);
-		System.out.println("one");
-	}
-
 	@Override
 	public void redraw(Graphics g)
 	{
