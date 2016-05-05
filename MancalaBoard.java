@@ -1,21 +1,33 @@
 package mancala;
 
 import java.awt.Graphics;
+import java.awt.Shape;
+import java.util.ArrayList;
 
 import javax.swing.JComponent;
 
 public class MancalaBoard extends JComponent
 {
-	private DesignLayout layout;
+	private DesignLayout design;
+	private int[] pits = {4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0};
 	
-	public MancalaBoard(DesignLayout layout)
+	public MancalaBoard(DesignLayout design)
 	{
-		this.layout = layout;
+		this.design = design;
 	}
 	
 	public void paintComponent(Graphics g)
 	{
-		//System.out.println("design # = " + layout.getName());
-		layout.redraw(g);
+		design.redraw(g, pits, this);
+	}
+	
+	public void setStones(int[] pitStone)
+	{
+		pits = pitStone;
+	}
+	
+	public ArrayList<Shape> getShape()
+	{
+		return design.getShape();
 	}
 }
