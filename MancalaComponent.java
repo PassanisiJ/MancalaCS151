@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-@SuppressWarnings("serial")
 /**
  * View and Controller for the Mancala board game.
  * ActionListener and MouseListener contributes in Controller part,
@@ -26,6 +25,7 @@ import javax.swing.event.ChangeListener;
  * It changes number of stones in each pit or remaining undo counts
  * and updates the change on the screen
  */
+@SuppressWarnings("serial")
 public class MancalaComponent extends JFrame implements ChangeListener, MouseListener, ActionListener
 {
 	private static final int WIDTH = 795;
@@ -99,12 +99,14 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		int gameOver = model.checkGameOver();
 		if (gameOver == 3)
 		{
-			JOptionPane.showMessageDialog(this, "Game ended as a draw");
+			playerLabel.setText("DRAW");
+			JOptionPane.showMessageDialog(this, "Game ended as a draw");			
 			dispose();
 		}
 		else if (gameOver == 1 || gameOver ==2)
 		{
-			JOptionPane.showMessageDialog(this, "Player" + gameOver + " is a winner!");
+			playerLabel.setText("WINNER: " + "Player" + gameOver);
+			JOptionPane.showMessageDialog(this, "Player" + gameOver + " is a winner!");			
 			dispose();
 		}
 	}
