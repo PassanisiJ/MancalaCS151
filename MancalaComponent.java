@@ -180,7 +180,7 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 					else
 						player = Player.Player2;
 					playerLabel.setText(player + "'s Turn");
-					//undoButton.setText("UNDO: "+ model.getUndoCount(player));
+					undoLabel.setText("P1 : " + model.getUndoCount(Player.Player1) + ", P2 : " + model.getUndoCount(Player.Player2) + " left");
 				}
 				catch (IllegalMoveException e1)
 				{
