@@ -31,6 +31,7 @@ public abstract class DesignLayout
 	private ArrayList<Shape> shapes = new ArrayList<>();
 	private ArrayList<JLabel> labels = new ArrayList<>();
 	private ArrayList<Shape> stones = new ArrayList<>();
+	private ArrayList<JLabel> indexes = new ArrayList<>();
 	
 	public void redraw(Graphics g, int[] pits, MancalaBoard board)
 	{
@@ -50,6 +51,12 @@ public abstract class DesignLayout
 	    	board.add(l);
 	    }
 	    
+	    //generate indexes
+	    for (JLabel i : indexes)
+	    {
+	    	board.add(i);
+	    }
+	    
 	    //generate pits and stones	    
 	    for (int i=0; i<shapes.size(); i++)
 	    {
@@ -61,6 +68,7 @@ public abstract class DesignLayout
 	    	g2.setStroke(new BasicStroke(4.0f));
 	    	stones = placeStones(s, i, g2, board);
 	    }
+	    
 	    
 	    
 	   
@@ -162,25 +170,33 @@ public abstract class DesignLayout
 	public void placeLabels(int[] stones)
 	{
 		labels = new ArrayList<>();
+		indexes = new ArrayList<>();
 		
 		for (int i=0; i<7; i++)
 		{
 			JLabel label = new JLabel(stones[i] + "");
+			JLabel index = new JLabel();
 			if (i == 6)
 			{				
-				label.setBounds((int) shapes.get(i).getBounds().getX()+30, (int) shapes.get(i).getBounds().getY()+285, 50, 50);				
+				label.setBounds((int) shapes.get(i).getBounds().getX()+30, (int) shapes.get(i).getBounds().getY()+285, 50, 50);
 			}
 			else
 			{		
 				label.setBounds((int) shapes.get(i).getBounds().getX()+30, (int) shapes.get(i).getBounds().getY()+85, 50, 50);
+				index.setText("B" + (i+1));
+				index.setBounds((int) shapes.get(i).getBounds().getX()+29, (int) shapes.get(i).getBounds().getY()+110, 50, 50);
 			}
 			label.setForeground(fontColor);
+			index.setForeground(fontColor);
 			labels.add(label);
+			indexes.add(index);
+			
 			
 		}
 		for (int i=7; i<14; i++)
 		{			
 			JLabel label = new JLabel(stones[i] + "");
+			JLabel index = new JLabel();
 			if (i == 13)
 			{				
 				label.setBounds((int) shapes.get(i).getBounds().getX()+30, (int) shapes.get(i).getBounds().getY()+285, 50, 50);
@@ -188,12 +204,14 @@ public abstract class DesignLayout
 			else
 			{
 				label.setBounds((int) shapes.get(i).getBounds().getX()+30, (int) shapes.get(i).getBounds().getY()-35, 50, 50);
+				index.setText("A" + (i-6));
+				index.setBounds((int) shapes.get(i).getBounds().getX()+29, (int) shapes.get(i).getBounds().getY()-60, 50, 50);				
 			}
 			label.setForeground(fontColor);
+			index.setForeground(fontColor);
 			labels.add(label);
+			indexes.add(index);
 		}
-
-
 	}
 
 }
