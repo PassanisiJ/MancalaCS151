@@ -146,6 +146,7 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		}
 		finally
 		{
+			//repaint after message pops up
 			board.removeAll();
 			board.repaint();
 		}
@@ -176,6 +177,12 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 				} catch (EmptyPitException e2)
 				{
 					JOptionPane.showMessageDialog(this, "Select a pit with at lease 1 stone", "Warning", JOptionPane.INFORMATION_MESSAGE);
+				}
+				finally
+				{
+					//repaint after message pops up
+					board.removeAll();
+					board.repaint();
 				}
 			}
 		}				
