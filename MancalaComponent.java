@@ -114,12 +114,8 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 	public void actionPerformed(ActionEvent e)
 	{
 		try
-		{
-			//switch the player first			
-			if (player == Player.Player1)
-				player = Player.Player2;
-			else
-				player = Player.Player1;
+		{			
+			player = model.getPreviousPlayer();
 			
 			//undo
 			model.undo(player);
@@ -147,10 +143,6 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		catch (NoMoveToUndoException e1)
 		{
 			JOptionPane.showMessageDialog(this, "You can't undo now");
-			if (player == Player.Player1)
-				player = Player.Player2;
-			else
-				player = Player.Player1;
 		}
 		finally
 		{
