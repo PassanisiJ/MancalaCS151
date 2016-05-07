@@ -20,6 +20,7 @@ public class MancalaModel
     private Pit[] previousBoard; // keep track for undo
     private int[] undoesLeft;
     private ArrayList<ChangeListener> listeners; // for views
+    private Player previousPlayer;
     
     private boolean undoAble = false;
     
@@ -32,6 +33,7 @@ public class MancalaModel
         listeners = new ArrayList<ChangeListener>();
         pits = new Pit[MAXIMUM_PITS];
         previousBoard = new Pit[MAXIMUM_PITS];
+        previousPlayer = null;
         
         PitType type;
         int stones;
@@ -78,6 +80,7 @@ public class MancalaModel
         for(int i = 0; i < pits.length; i++)
         {
             previousBoard[i].setStones(pits[i].getStones());
+            previousPlayer = p;
             undoAble = true;
         }
         
@@ -240,6 +243,7 @@ public class MancalaModel
             
         }
         
+        
         undoAble = false;
         
         if (p == Player.Player1)
@@ -248,6 +252,11 @@ public class MancalaModel
         	undoesLeft[1]--;
         
         updateListeners();
+    }
+    
+    public Player getPreviousPlayer()
+    {
+    	return previousPlayer;
     }
     
     /** String representation of board used for testing
