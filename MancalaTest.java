@@ -5,7 +5,7 @@ import java.io.IOException;
 /** Mancala GUI tester
  * @author Janice Kim, Shlomo Nazarian, Justin Passanisi
  */
-public class MancalaTester {
+public class MancalaTest {
 
     /** main()
      * @param args the command line arguments
