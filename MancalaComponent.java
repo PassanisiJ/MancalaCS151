@@ -51,7 +51,8 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		
 		// get inputs from the user
 		MancalaDialog selectScreen = new MancalaDialog(this, designs);
-		selectScreen.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		selectScreen.setLocation(800, 0);
+		selectScreen.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		selectScreen.display();		
 		remove(tempBoard);
 		
