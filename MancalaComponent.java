@@ -35,6 +35,7 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 	private MancalaModel model;
 	private JLabel undoLabel;
 	private JLabel playerLabel;
+	private JButton undoButton;
 	private Pit[] pits;
 	private Player player = Player.Player1;
 	
@@ -43,17 +44,23 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		setTitle("Mancala");
 		setSize(WIDTH, HEIGHT);
 		
+		//displays an empty board
+		MancalaBoard tempBoard = new MancalaBoard(0, designs[0]);
+		add(tempBoard);
+		setVisible(true);
+		
 		// get inputs from the user
 		MancalaDialog selectScreen = new MancalaDialog(this, designs);
 		selectScreen.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		selectScreen.display();
+		selectScreen.display();		
+		remove(tempBoard);
 		
 		//start a game screen
 		start(selectScreen.getStoneNum(), selectScreen.getDesign());
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		setResizable(false);
-		setVisible(true);
+		//setVisible(true);
 	}
 	
 	/**
@@ -77,7 +84,7 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		northPanel.add(playerLabel);
 		northPanel.add(Box.createHorizontalStrut(400));
 		
-		JButton undoButton = new JButton("UNDO");
+		undoButton = new JButton("UNDO");
 		undoButton.addActionListener(this);
 		northPanel.add(undoButton);
 		
@@ -101,12 +108,18 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		if (gameOver == 3)
 		{
 			playerLabel.setText("DRAW");
+			undoButton.setText("GAME OVER");
+			undoLabel.setText("");
 			JOptionPane.showMessageDialog(this, "Game ended as a draw");
+			dispose();
 		}
 		else if (gameOver == 1 || gameOver ==2)
 		{
 			playerLabel.setText("WINNER: " + "Player" + gameOver);
+			undoButton.setText("GAME OVER");
+			undoLabel.setText("");
 			JOptionPane.showMessageDialog(this, "Player" + gameOver + " is a winner!");
+			dispose();
 		}
 	}
 	
