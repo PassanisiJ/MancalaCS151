@@ -100,7 +100,7 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 	public void stateChanged(ChangeEvent e)
 	{
 		//stores number of stones into the design
-		board.setData(pits, player);
+		board.setData(model.getPits(), player);
 		board.removeAll();
 		board.repaint();
 		
