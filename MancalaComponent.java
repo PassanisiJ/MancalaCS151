@@ -105,21 +105,20 @@ public class MancalaComponent extends JFrame implements ChangeListener, MouseLis
 		
 		//indicate when the game is over
 		int gameOver = model.checkGameOver();
-		if (gameOver == 3)
+		if (gameOver != 0)
 		{
-			playerLabel.setText("DRAW");
 			undoButton.setText("GAME OVER");
 			undoLabel.setText("");
-			JOptionPane.showMessageDialog(this, "Game ended as a draw");
-			dispose();
-		}
-		else if (gameOver == 1 || gameOver ==2)
-		{
-			playerLabel.setText("WINNER: " + "Player" + gameOver);
-			undoButton.setText("GAME OVER");
-			undoLabel.setText("");
-			JOptionPane.showMessageDialog(this, "Player" + gameOver + " is a winner!");
-			dispose();
+			if (gameOver == 3)
+			{
+				playerLabel.setText("DRAW");
+				JOptionPane.showMessageDialog(this, "Game ended as a draw");
+			}
+			else if (gameOver == 1 || gameOver ==2)
+			{
+				playerLabel.setText("WINNER: " + "Player" + gameOver);
+				JOptionPane.showMessageDialog(this, "Player" + gameOver + " is a winner!");
+			}
 		}
 	}
 	
